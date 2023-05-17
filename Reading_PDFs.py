@@ -5,6 +5,8 @@ import arxiv
 #os.environ['HUGGINGFACEHUB_API_TOKEN'] = HUGGINGFACEHUB_API_TOKEN
 
 
+#huggingfacehub_api_token = os.environ['HUGGINGFACEHUB_API_TOKEN']
+
 from langchain.document_loaders import PyPDFLoader
 from langchain.document_loaders import OnlinePDFLoader
 from langchain.document_loaders import MathpixPDFLoader
@@ -28,7 +30,7 @@ def load_one_pdf(url):
     #that work for you. This reduces the chance of having a chunk that doesn't fit
 
     #text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0, separators=[" ", ",", "\n"])
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=600, chunk_overlap=0, separators=[" ", ",", "\n"])
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=600, chunk_overlap=100, separators=[" ", ",", "\n"])
     documents = loader.load()
     texts = text_splitter.split_documents(documents)
     
